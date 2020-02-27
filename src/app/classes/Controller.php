@@ -27,10 +27,6 @@ class Controller {
             include dirname(__DIR__) . '\view\\' . $views . '.php';
         }
         // include "..\view\{$view_arquivo}.php";
-        
         ob_flush();
     }
-
 }
-
-?>

@@ -20,10 +20,10 @@ class Medico extends \App\classes\Controller {
             } elseif ($tipo == 'atualizar') {
                 $this->atualizar();
             } else {
-                $this->exibirErro("Pagina não encontrada!", $tipo . ' não corresponde a nenhuma operação!');
+                $this->exibirErro("Pagina não encontrada! " . $tipo . ' não corresponde a nenhuma operação!');
             }
         } catch (Exception $e) {
-            $this->exibirErro("Application error", $e->getMessage());
+            $this->exibirErro($e->getMessage());
         }
     }
 
@@ -40,13 +40,11 @@ class Medico extends \App\classes\Controller {
         $id = (int) $this->request->id;
         if ($medico = \App\model\Medico::recuperar($id)) {
             return $this->views(['Cabecalho', 'Edicao', 'Rodape'], ['medico' => $medico]);
-        } else {
-            $this->exibirErro('Erro', 'Registro não encontrado!');
         }
+        $this->exibirErro('Registro não encontrado!');
     }
 
     public function inserir() {
-
         $validar = new \App\classes\Validator();
         $validar->isEmail($this->request->email_txt);
         $validar->maxMin($this->request->email_txt, 'Email', 112, 6);
@@ -55,7 +53,7 @@ class Medico extends \App\classes\Controller {
         $validar->maxMin($this->request->endereco_consultorio_txt, 'Endereço do Consultório', 112, 6);
 
         if ($validar->errors) {
-            echo $validar->errors;
+            $this->exibirErro($validar->errors);
             return;
         }
 
@@ -66,12 +64,12 @@ class Medico extends \App\classes\Controller {
         $medico->setEnderecoConsultorio($this->request->endereco_consultorio_txt);
         $medico->setDataCriacao((new \DateTime())->format('Y-m-d H:i:s'));
         if ($medico->criar()) {
-            echo 'Criado';
+            return $this->listar();
         }
+        $this->exibirErro('Ocorreu algum erro ao inserir um novo registro!');
     }
 
     public function atualizar() {
-
         $validar = new \App\classes\Validator();
         $validar->maxMin($this->request->nome_txt, 'Nome', 112, 6);
         $validar->maxMin($this->request->endereco_consultorio_txt, 'Endereço do Consultório', 112, 6);
@@ -80,7 +78,7 @@ class Medico extends \App\classes\Controller {
         }
 
         if ($validar->errors) {
-            echo $validar->errors;
+            $this->exibirErro($validar->errors);
             return;
         }
 
@@ -99,19 +97,19 @@ class Medico extends \App\classes\Controller {
         if ($medico->atualizar()) {
             return $this->listar();
         }
+        $this->exibirErro('Ocorreu algum erro ao atualizar o registro!');
     }
 
     public function excluir() {
         $id = (int) $this->request->id;
         if (\App\model\Medico::destroy($id)) {
             return $this->listar();
-        } else {
-            echo 'Erro';
         }
+        $this->exibirErro('Ocorreu algum erro ao excluir o registro!');
     }
 
-    public function exibirErro($titulo, $mensagem) {
-        // return $this->view('Cadastro');
+    public function exibirErro($errosMsg) {
+        return $this->views(['Cabecalho', 'Erros', 'Rodape'], ['erros' => $errosMsg]);
     }
 
 }

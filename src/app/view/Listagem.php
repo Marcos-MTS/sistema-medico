@@ -21,8 +21,8 @@
                             <td><?php echo $medico->getNome(); ?></td>
                             <td><?php echo $medico->getEnderecoConsultorio(); ?></td>
                             <td>
-                                <a href="?tipo=editar&id=<?php echo $medico->getId(); ?>" class="btn btn-primary btn-sm">Editar</a>
-                                <a href="?tipo=excluir&id=<?php echo $medico->getId(); ?>" class="btn btn-danger btn-sm">Excluir</a>
+                                <a href="?tipo=editar&id=<?php echo $medico->getId(); ?>" class="btn btn-primary btn-sm"><button>Editar</button></a>
+                                <a href="?tipo=excluir&id=<?php echo $medico->getId(); ?>" id="btn-delete" class="btn btn-delete btn-danger btn-sm"><button>Excluir</button></a>
                             </td>
                         </tr>
                         <?php
@@ -30,7 +30,7 @@
                 } else {
                     ?>
                     <tr>
-                        <td colspan="5">Nenhum registro encontrado</td>
+                        <td colspan="3">Nenhum registro encontrado</td>
                     </tr>
                     <?php
                 }

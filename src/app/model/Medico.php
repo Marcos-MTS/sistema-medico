@@ -70,23 +70,17 @@ class Medico {
 
     public function criar() {
         $sql = "INSERT INTO medico (email, nome, senha, endereco_consultorio, data_criacao) VALUES (?,?,?,?,?)";
-        try {
-            $conexao = Conexao::getInstance();
-            $stmt = $conexao->prepare($sql);
-            $stmt->bindValue(1, $this->email);
-            $stmt->bindValue(2, $this->nome);
-            $stmt->bindValue(3, $this->senha);
-            $stmt->bindValue(4, $this->endereco_consultorio);
-            $stmt->bindValue(5, $this->data_criacao);
-            //  $stmt->bindValue(6, $this->data_alteracao);
-            return $stmt->execute();
-        } catch (Exception $e) {
-            die("Erro na execução da Query: " . $e->getMessage());
-        }
+        $conexao = Conexao::getInstance();
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindValue(1, $this->email);
+        $stmt->bindValue(2, $this->nome);
+        $stmt->bindValue(3, $this->senha);
+        $stmt->bindValue(4, $this->endereco_consultorio);
+        $stmt->bindValue(5, $this->data_criacao);
+        return $stmt->execute();
     }
 
     public function atualizar() {
-
         //pega a senha antiga
         $senha = $this->recuperar($this->id)->getSenha();
 
@@ -103,7 +97,7 @@ class Medico {
         $stmt->bindValue(3, $this->endereco_consultorio);
         $stmt->bindValue(4, $this->data_alteracao);
         $stmt->bindValue(5, $this->id);
-        $stmt->execute();
+        return $stmt->execute();
     }
 
     public static function listar() {
@@ -120,7 +114,7 @@ class Medico {
         }
         return false;
     }
-    
+
     public static function recuperar($id) {
         $conexao = Conexao::getInstance();
         $stmt = $conexao->prepare("SELECT * FROM medico WHERE id='{$id}';");
@@ -137,10 +131,7 @@ class Medico {
 
     public static function destroy($id) {
         $conexao = Conexao::getInstance();
-        if ($conexao->exec("DELETE FROM medico WHERE id='{$id}';")) {
-            return true;
-        }
-        return false;
+        return $conexao->exec("DELETE FROM medico WHERE id='{$id}';");
     }
 
 }

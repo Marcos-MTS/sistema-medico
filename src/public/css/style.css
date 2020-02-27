@@ -73,9 +73,11 @@
                 color: white;
                 font-size: 18px;
                 background-color: #3ac4ee;
-                padding: 10px;
+                padding: 8px;
                 border: none;
+                cursor: pointer;
             }
+            
             #btn-novo{
                 margin-left: 0px;
                 text-decoration: underline;
