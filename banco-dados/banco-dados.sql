@@ -1,7 +1,4 @@
 
-
-# É recomendado que a a estrutura e os dados de exemplos estajam nessa pasta
-
 CREATE TABLE `medico` (
   `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,

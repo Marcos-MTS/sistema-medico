@@ -4,7 +4,6 @@ namespace App\controller;
 
 class Medico extends \App\classes\Controller {
 
-
     public function operacao() {
         $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : NULL;
         try {
@@ -25,6 +24,24 @@ class Medico extends \App\classes\Controller {
             }
         } catch (Exception $e) {
             $this->exibirErro("Application error", $e->getMessage());
+        }
+    }
+
+    public function criar() {
+        return $this->views(['Cabecalho', 'Cadastro', 'Rodape']);
+    }
+
+    public function listar() {
+        $medicos = \App\model\Medico::listar();
+        return $this->views(['Cabecalho', 'Listagem', 'Rodape'], ['medicos' => $medicos]);
+    }
+
+    public function editar() {
+        $id = (int) $this->request->id;
+        if ($medico = \App\model\Medico::recuperar($id)) {
+            return $this->views(['Cabecalho', 'Edicao', 'Rodape'], ['medico' => $medico]);
+        } else {
+            $this->exibirErro('Erro', 'Registro não encontrado!');
         }
     }
 
@@ -53,28 +70,6 @@ class Medico extends \App\classes\Controller {
         }
     }
 
-  
-    public function listar() {
-        $medicos = \App\model\Medico::listar();
-        return $this->view('Listagem', ['medicos' => $medicos]);
-    }
-
- 
-    public function criar() {
-        return $this->view('Cadastro');
-    }
-
-   
-    public function editar() {
-        $id = (int) $this->request->id;
-        if ($medico = \App\model\Medico::recuperar($id)) {
-            return $this->view('Edicao', ['medico' => $medico]);
-        } else {
-            $this->exibirErro('Erro', 'Registro não encontrado!');
-        }
-    }
-
-   
     public function atualizar() {
 
         $validar = new \App\classes\Validator();
@@ -94,7 +89,7 @@ class Medico extends \App\classes\Controller {
         $medico->setNome($this->request->nome_txt);
         $medico->setEnderecoConsultorio($this->request->endereco_consultorio_txt);
         $medico->setDataAlteracao((new \DateTime())->format('Y-m-d H:i:s'));
-        
+
         if (trim($this->request->senha_txt)) {
             $medico->setSenha(sha1($this->request->senha_txt));
         } else {

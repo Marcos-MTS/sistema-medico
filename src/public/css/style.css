@@ -1,0 +1,139 @@
+
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            header {
+                background-color: #3ac4ee;
+                padding: 8px;
+                text-align: center;
+                font-size: 23px;
+                color: white;
+
+            }
+
+            .form-control{
+                margin-bottom: 20px;
+                padding: 8px;
+                display: block;
+                border: none;
+
+                width: 100%;
+                border: 1px solid #2ba4ca;
+            }
+
+            label{
+                font-size: 20px;
+                color: #2ba4ca;
+            }
+
+
+            a{
+                color:#0072d7;;
+                text-decoration: none;
+                margin-left: 10px;
+                font-size: 16px;
+
+            }
+            a:hover{
+                text-decoration: underline;
+            }
+
+            .container{
+                text-align: center;
+            }
+
+            section{
+                margin-top: 10px;
+                border-style: solid;
+                border-color: #3ac4ee;
+                width: 600px; 
+                display: inline-block;
+                background-color: #f5f5f5;
+            }
+
+            form{
+                text-align: left;
+                padding: 40px;
+            }
+
+            input{
+                margin-bottom: 5px;
+                margin-top: 5px;
+                font-size: 15px;
+                color: #504842;
+                max-width: 500px;
+            }
+
+            button{
+                color: white;
+                font-size: 18px;
+                background-color: #3ac4ee;
+                padding: 10px;
+                border: none;
+            }
+            #btn-novo{
+                margin-left: 0px;
+                text-decoration: underline;
+                color:#424242;;
+            }
+            #btn-novo:hover{
+                color: #006aaa;
+            }
+
+
+            .table {
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                background: white;
+
+            }
+
+            .table td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                color:#484848;
+                font-size: 15px;
+            }
+
+            .table tr:nth-child(even){background-color: #f2f2f2;}
+
+            .table tr:hover {background-color: #ddd;}
+
+            .table th {
+                text-align: center;
+                font-size: 19px;
+                padding-top: 12px;
+                padding-bottom: 12px;
+
+                background-color: #3ac4ee;
+                color: white;
+            }
+
+
+
+            /* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+            @media (max-width: 600px) {
+                section {
+                    width: 100%; 
+                }
+
+                button{
+                    margin-top: 20px;
+                    width: 100%; 
+                }
+
+                form{
+                    padding: 15px;
+                }
+
+                header {
+                    font-size: 20px;
+                    padding: 5px;
+                }
+            }
