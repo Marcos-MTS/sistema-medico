@@ -10,12 +10,12 @@ class Conexao {
         
     }
 
+    //Inicia uma nova conexao ao banco caso não houver
     public static function getInstance() {
         try {
             if (is_null(self::$conexao)) {
                 self::$conexao = new \PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
                 self::$conexao->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-                self::$conexao->exec('set names utf8');
             }
             return self::$conexao;
         } catch (Exception $e) {
@@ -24,5 +24,3 @@ class Conexao {
     }
 
 }
-
-?>

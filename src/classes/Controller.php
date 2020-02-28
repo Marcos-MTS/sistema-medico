@@ -7,17 +7,19 @@ class Controller {
 
     public $request;
 
+    //instacia a classe Request
     public function __construct() {
         $this->request = new Request();
     }
 
-    public function views($views = null, $array = null) {
+    //responsavel pelo carregamento de view
+    protected function views($views = null, $array = null) {
         if (!is_null($array)) {
             foreach ($array as $var => $value) {
                 ${$var} = $value;
             }
         }
-        
+
         ob_start();
 
         if (is_array($views)) {
@@ -30,4 +32,10 @@ class Controller {
         // include "..\view\{$view_arquivo}.php";
         ob_flush();
     }
+
+    //Carrega a pagina com a mensagem de erros
+    protected function exibirErro($errosMsg) {
+        return $this->views(['cabecalho', 'erros', 'rodape'], ['erros' => $errosMsg]);
+    }
+
 }

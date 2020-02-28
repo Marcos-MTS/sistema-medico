@@ -4,12 +4,12 @@
 
 <div class="container">
     <section>
-        <table class="table table-bordered table-striped" style="top:40px;">
+        <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Nome</th>
                     <th>Endereço do Consultório</th>
-                    <th><a href="?tipo=criar" id="btn-novo" class="btn btn-success btn-sm">Adicionar Médico</a></th>
+                    <th><a href="?tipo=criar" id="btn-novo" class="btn btn-success btn-sm"><button>Adicionar Médico</button></a></th>
                 </tr>
             </thead>
             <tbody>
@@ -22,7 +22,7 @@
                             <td><?php echo $medico->getEnderecoConsultorio(); ?></td>
                             <td>
                                 <a href="?tipo=editar&id=<?php echo $medico->getId(); ?>" class="btn btn-primary btn-sm"><button>Editar</button></a>
-                                <a href="?tipo=excluir&id=<?php echo $medico->getId(); ?>" id="btn-delete" class="btn btn-delete btn-danger btn-sm"><button>Excluir</button></a>
+                                <a href="?tipo=excluir&id=<?php echo $medico->getId(); ?>" id="btn-delete" class="btn btn-delete btn-danger btn-sm"><button class="btn-danger">Excluir</button></a>
                             </td>
                         </tr>
                         <?php

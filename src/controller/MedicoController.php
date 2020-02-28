@@ -5,6 +5,7 @@ require_once ('model/Medico.php');
 
 class MedicoController extends Controller {
 
+    //Recebe o tipo de operação que a classe deve executar via GET
     public function operacao() {
         $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : NULL;
         try {
@@ -28,23 +29,27 @@ class MedicoController extends Controller {
         }
     }
 
+    //Carrega a pagina de cadastro
     public function criar() {
-        return $this->views(['Cabecalho', 'Cadastro', 'Rodape']);
+        return $this->views(['cabecalho', 'cadastro', 'rodape']);
     }
 
+    //Carrega a pagina com a lista de médicos
     public function listar() {
         $medicos = Medico::listar();
-        return $this->views(['Cabecalho', 'Listagem', 'Rodape'], ['medicos' => $medicos]);
+        return $this->views(['cabecalho', 'listagem', 'rodape'], ['medicos' => $medicos]);
     }
 
+    //Recupera o médico de acordo com o id e carrega a tela de edição
     public function editar() {
         $id = (int) $this->request->id;
         if ($medico = Medico::recuperar($id)) {
-            return $this->views(['Cabecalho', 'Edicao', 'Rodape'], ['medico' => $medico]);
+            return $this->views(['cabecalho', 'edicao', 'rodape'], ['medico' => $medico]);
         }
         $this->exibirErro('Registro não encontrado!');
     }
 
+    //Valida e armazena os dados recebidos no banco de dados
     public function inserir() {
         $validar = new Validator();
         $validar->isEmail($this->request->email_txt);
@@ -72,6 +77,7 @@ class MedicoController extends Controller {
         $this->exibirErro('Ocorreu algum erro ao inserir um novo registro!');
     }
 
+    //Valida e atualiza os dados no banco de dados
     public function atualizar() {
         $validar = new Validator();
         $validar->maxMin($this->request->nome_txt, 'Nome', 112, 6);
@@ -105,6 +111,7 @@ class MedicoController extends Controller {
         $this->exibirErro('Ocorreu algum erro ao atualizar o registro!');
     }
 
+    //Exclui o medico de acordo com o id recebido
     public function excluir() {
         $id = (int) $this->request->id;
         if (Medico::destroy($id)) {
@@ -113,10 +120,6 @@ class MedicoController extends Controller {
             die();
         }
         $this->exibirErro('Ocorreu algum erro ao excluir o registro!');
-    }
-
-    public function exibirErro($errosMsg) {
-        return $this->views(['Cabecalho', 'Erros', 'Rodape'], ['erros' => $errosMsg]);
     }
 
 }

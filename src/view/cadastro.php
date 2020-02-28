@@ -1,6 +1,6 @@
 
 <header>
-    <h2>Cadastro de médico</h2>
+    <h2>Cadastro do Médico</h2>
 </header>
 <div class="container">
     <section>

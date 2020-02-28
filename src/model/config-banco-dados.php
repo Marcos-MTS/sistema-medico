@@ -1,8 +1,7 @@
 <?php
 
 /*
-* É recomendado que as configurações de conexão com o Banco de Dados seja nesse arquivo.
-* Veja o exemplo:
+* Configuração do Banco de dados
 */
 
 define("DB_HOST", "localhost");
