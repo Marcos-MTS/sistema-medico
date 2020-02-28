@@ -1,8 +1,4 @@
-# Bloqueia a listagem de diretórios.
 
-Options All -Indexes
-
-
-# Mensagem de erro personalizada.
-
-ErrorDocument 403 "Desculpe! acesso nao permitido!
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]

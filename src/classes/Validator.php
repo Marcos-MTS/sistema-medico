@@ -1,7 +1,5 @@
 <?php
 
-namespace App\classes;
-
 class Validator {
 
     public $errors = null;

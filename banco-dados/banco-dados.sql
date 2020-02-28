@@ -1,4 +1,7 @@
 
+
+# É recomendado que a a estrutura e os dados de exemplos estajam nessa pasta
+
 CREATE TABLE `medico` (
   `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -7,6 +10,6 @@ CREATE TABLE `medico` (
   `endereco_consultorio` varchar(255) NOT NULL,
   `data_criacao` timestamp NULL DEFAULT NULL,
   `data_alteracao` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) 
 
 

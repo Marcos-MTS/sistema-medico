@@ -1,6 +1,7 @@
 <?php
 
-namespace App\classes;
+require_once ('Request.php');
+require_once ('Validator.php');
 
 class Controller {
 

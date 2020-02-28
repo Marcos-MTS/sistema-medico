@@ -5,9 +5,9 @@
  */
 
 // Config
-require 'config.php';
-require 'vendor/autoload.php';
+require_once 'config.php';
+require_once ('controller/MedicoController.php');
 
-$controller = new App\controller\Medico();
+$controller = new MedicoController();
 $controller->operacao();
 

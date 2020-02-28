@@ -1,8 +1,6 @@
 <?php
 
-namespace App\model;
-
-include 'config-banco-dados.php';
+require_once 'config-banco-dados.php';
 
 class Conexao {
 

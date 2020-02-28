@@ -1,6 +1,6 @@
 <?php
 
-namespace App\model;
+require_once ('Conexao.php');
 
 class Medico {
 
@@ -102,7 +102,7 @@ class Medico {
 
     public static function listar() {
         $conexao = Conexao::getInstance();
-        $stmt = $conexao->prepare("SELECT * FROM medico;");
+        $stmt = $conexao->prepare("SELECT * FROM medico ORDER BY id DESC;");
         $result = array();
         if ($stmt->execute()) {
             while ($rs = $stmt->fetchObject(Medico::class)) {

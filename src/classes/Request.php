@@ -1,7 +1,5 @@
 <?php
 
-namespace App\classes;
-
 class Request
 {
     protected $request;
