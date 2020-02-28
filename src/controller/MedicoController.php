@@ -19,6 +19,8 @@ class MedicoController extends Controller {
                 $this->excluir();
             } elseif ($tipo == 'editar') {
                 $this->editar();
+            } elseif ($tipo == 'email') {
+                $this->emailExiste();
             } elseif ($tipo == 'atualizar') {
                 $this->atualizar();
             } else {
@@ -49,6 +51,27 @@ class MedicoController extends Controller {
         $this->exibirErro('Registro não encontrado!');
     }
 
+    //Verifica a existencia do email no banco e retorna o resusltado em duas formas possiveis
+    public function emailExiste($email = null) {
+        $emailMedico = null;
+        if ($email) {
+            $emailMedico = $email;
+        } else {
+            $emailMedico = $this->request->email_txt;
+        }
+        if (Medico::recuperarPorEmail($emailMedico)) {
+            if ($email) {
+                return true;
+            } else {
+                echo json_encode(['result' => true]);
+            }
+        } else if ($email) {
+            return false;
+        } else {
+            echo json_encode(['result' => false]);
+        }
+    }
+
     //Valida e armazena os dados recebidos no banco de dados
     public function inserir() {
         $validar = new Validator();
@@ -57,6 +80,12 @@ class MedicoController extends Controller {
         $validar->maxMin($this->request->nome_txt, 'Nome', 112, 6);
         $validar->maxMin($this->request->senha_txt, 'Senha', 112, 6);
         $validar->maxMin($this->request->endereco_consultorio_txt, 'Endereço do Consultório', 112, 6);
+
+        if ($this->request->email_txt) {
+            if ($this->emailExiste($this->request->email_txt)) {
+                $validar->errors .= "Esse email ja se encontra cadastrado!";
+            }
+        }
 
         if ($validar->errors) {
             $this->exibirErro($validar->errors);

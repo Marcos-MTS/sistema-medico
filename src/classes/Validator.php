@@ -5,7 +5,7 @@ class Validator {
     public $errors = null;
 
     // Verifica se possui o tamanho minimo e maximo 
-    protected function maxMin($string, $campo, $max, $min) {
+    public function maxMin($string, $campo, $max, $min) {
         if (strlen($string) > $max) {
             $this->errors .= 'O campo ' . $campo . ' deve conter no máximo ' . $max . ' caracteres! </br></br>';
         }
@@ -15,7 +15,7 @@ class Validator {
     }
 
     //Verifica se é um email válido
-    protected function isEmail($string) {
+    public function isEmail($string) {
         if (!filter_var($string, FILTER_VALIDATE_EMAIL)) {
             $this->errors .= 'Email Inválido! </br></br>';
         }

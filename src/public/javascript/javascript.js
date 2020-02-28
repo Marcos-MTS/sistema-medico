@@ -41,7 +41,7 @@ $(document).ready(function () {
         maxMin($('#enderecoConsultorioTxt').val(), 'Endereço do Consultório', 112, 6);
         maxMin($('#senhaTxt').val(), 'Senha', 112, 6);
         testPass($('#senhaTxt').val(), $('#reSenhaTxt').val());
-
+        
         if (erros) {
             $.MessageBox('<b>Atenção</b></br></br>' + erros);
             return false;
@@ -53,12 +53,11 @@ $(document).ready(function () {
         erros = '';
         maxMin($('#nomeTxt').val(), 'Nome', 112, 6);
         maxMin($('#enderecoConsultorioTxt').val(), 'Endereço do Consultório', 112, 6);
-
+        
         if ($('#senhaTxt').val().trim().length > 0 || $('#reSenhaTxt').val().trim().length > 0) {
             maxMin($('#senhaTxt').val(), 'Senha', 112, 6);
             testPass($('#senhaTxt').val(), $('#reSenhaTxt').val());
         }
-
         if (erros) {
             $.MessageBox('<b>Atenção</b></br></br>' + erros);
             return false;
@@ -80,5 +79,25 @@ $(document).ready(function () {
         });
         return false;
     });
+
+    //Verifica se o email informado já existe 
+    $('#emailTxt').blur(function () {
+        $.ajax({
+            type: 'POST',
+            async: true,
+            url: 'index.php?tipo=email',
+            data: {
+                'email_txt': $('#emailTxt').val()
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response.result === true) {
+                    $.MessageBox('<b>Atenção</b></br></br>O email '+ $('#emailTxt').val() +' já se encontra cadastrado!');
+                    $('#emailTxt').val('');
+                }
+            }
+        });
+    });
+
 });
 

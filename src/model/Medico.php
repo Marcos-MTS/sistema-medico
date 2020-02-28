@@ -115,7 +115,7 @@ class Medico {
         return false;
     }
 
-    public static function recuperar($id) {
+    public static function recuperar($id = null) {
         $conexao = Conexao::getInstance();
         $stmt = $conexao->prepare("SELECT * FROM medico WHERE id='{$id}';");
         if ($stmt->execute()) {
@@ -129,7 +129,18 @@ class Medico {
         return false;
     }
 
-    public static function destroy($id) {
+    public static function recuperarPorEmail($email = null) {
+        $conexao = Conexao::getInstance();
+        $stmt = $conexao->prepare("SELECT * FROM medico WHERE email='{$email}';");
+        if ($stmt->execute()) {
+            if ($stmt->rowCount() > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static function destroy($id = null) {
         $conexao = Conexao::getInstance();
         return $conexao->exec("DELETE FROM medico WHERE id='{$id}';");
     }
