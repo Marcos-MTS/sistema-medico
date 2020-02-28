@@ -1,6 +1,6 @@
 <?php
 
-define("URL", "http://localhost/modelo-fc/src/");
+define("URL", "");
 
 date_default_timezone_set("America/Sao_Paulo");
 
