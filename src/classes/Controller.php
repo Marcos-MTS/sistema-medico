@@ -24,10 +24,10 @@ class Controller {
 
         if (is_array($views)) {
             foreach ($views as $view) {
-                include dirname(__DIR__) . '\view\\' . $view . '.php';
+                include dirname(__DIR__) . '/view//' . $view . '.php';
             }
         } else {
-            include dirname(__DIR__) . '\view\\' . $views . '.php';
+            include dirname(__DIR__) . '/view//' . $views . '.php';
         }
         // include "..\view\{$view_arquivo}.php";
         ob_flush();

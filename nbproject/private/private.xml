@@ -3,16 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/php/www/modelo-fc/src/public/javascript/javascript.js</file>
             <file>file:/C:/xampp/php/www/modelo-fc/src/.htaccess</file>
-            <file>file:/C:/xampp/php/www/modelo-fc/src/model/Medico.php</file>
-            <file>file:/C:/xampp/php/www/modelo-fc/src/model/index.html</file>
+            <file>file:/C:/xampp/php/www/modelo-fc/README.md</file>
             <file>file:/C:/xampp/php/www/modelo-fc/src/controller/MedicoController.php</file>
-            <file>file:/C:/xampp/php/www/modelo-fc/src/public/css/style.css</file>
             <file>file:/C:/xampp/php/www/modelo-fc/src/classes/Controller.php</file>
             <file>file:/C:/xampp/php/www/modelo-fc/src/classes/Validator.php</file>
-            <file>file:/C:/xampp/php/www/modelo-fc/src/classes/Request.php</file>
             <file>file:/C:/xampp/php/www/modelo-fc/src/model/Conexao.php</file>
+            <file>file:/C:/xampp/php/www/modelo-fc/src/public/javascript/javascript.js</file>
+            <file>file:/C:/xampp/php/www/modelo-fc/src/model/Medico.php</file>
+            <file>file:/C:/xampp/php/www/modelo-fc/src/model/index.html</file>
+            <file>file:/C:/xampp/php/www/modelo-fc/src/view/cabecalho.php</file>
+            <file>file:/C:/xampp/php/www/modelo-fc/src/public/css/style.css</file>
+            <file>file:/C:/xampp/php/www/modelo-fc/src/view/cadastro.php</file>
+            <file>file:/C:/xampp/php/www/modelo-fc/src/config.php</file>
+            <file>file:/C:/xampp/php/www/modelo-fc/src/classes/Request.php</file>
+            <file>file:/C:/xampp/php/www/modelo-fc/src/view/listagem.php</file>
+            <file>file:/C:/xampp/php/www/modelo-fc/src/view/edicao.php</file>
             <file>file:/C:/xampp/php/www/modelo-fc/src/model/config-banco-dados.php</file>
         </group>
     </open-files>
